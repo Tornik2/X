@@ -1,4 +1,6 @@
-import "./login.css"; // 
+import { Facebook, Apple } from "lucide-react"; // Lucide icons
+import { FcGoogle } from "react-icons/fc"; // Google icon
+import "./login.css";
 
 export default function LoginPage() {
   return (
@@ -21,9 +23,9 @@ export default function LoginPage() {
       <p className="or-text">Or Continue with</p>
 
       <div className="social-buttons">
-        <button className="social-icon">G</button>
-        <button className="social-icon">F</button>
-        <button className="social-icon"></button>
+        <button className="social-icon"><FcGoogle size={24} /></button>
+        <button className="social-icon"><Facebook size={24} color="#1877F2" /></button>
+        <button className="social-icon"><Apple size={24} /></button>
       </div>
     </div>
   );

@@ -1,0 +1,140 @@
+/* ======= LOGIN PAGE STYLING ======= */
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    color: white;
+    background: black;
+    min-height: 100vh;
+  }
+  
+  /* Title */
+  .login-title {
+    font-size: 26px;
+    font-weight: bold;
+    color: #d4ff00;
+    margin-bottom: 10px;
+  }
+  
+  /* Subtitle */
+  .login-subtitle {
+    font-size: 14px;
+    margin-bottom: 20px;
+    opacity: 0.8;
+    max-width: 300px;
+  }
+  
+  /* Input Fields */
+  .input-group {
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 15px;
+    position: relative;
+  }
+  
+  .input-group input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 25px;
+    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    outline: none;
+    padding-left: 15px;
+  }
+  
+  .input-group input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+  }
+  
+  /* Forgot Password */
+  .forgot-password {
+    font-size: 12px;
+    color: white;
+    text-decoration: underline;
+    margin-bottom: 20px;
+    cursor: pointer;
+  }
+  
+  /* Buttons */
+  .primary-button {
+    width: 100%;
+    max-width: 300px;
+    padding: 12px;
+    background: #d4ff00;
+    color: black;
+    font-weight: bold;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    border: none;
+  }
+  
+  .secondary-button {
+    width: 100%;
+    max-width: 300px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-weight: bold;
+    border-radius: 25px;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+    text-decoration: none;
+    margin-bottom: 20px;
+  }
+  
+  /* Or Continue With */
+  .or-text {
+    font-size: 14px;
+    margin: 20px 0;
+    opacity: 0.8;
+  }
+  
+  /* Social Buttons */
+  .social-buttons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .social-icon {
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    border: none;
+  }
+  
+  /* ======= DESKTOP STYLING ======= */
+  @media (min-width: 768px) {
+    .login-container {
+      max-width: 600px;
+      margin: auto;
+      padding: 50px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.05);
+    }
+  
+    .input-group {
+      max-width: 500px;
+    }
+  
+    .primary-button,
+    .secondary-button {
+      max-width: 500px;
+    }
+  
+    .social-buttons {
+      justify-content: center;
+    }
+  }
+  
