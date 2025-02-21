@@ -43,6 +43,9 @@
     box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
     text-align: center;
   }
+  .merchant-card:hover {
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  }
   
   .merchant-image {
     border-radius: 10px;
@@ -102,11 +105,16 @@
     background: #d4ff00;
   }
   
- 
+  .hero {
+    display: none;
+  }
   
   @media (min-width: 768px) {
+
+    .header {
+        margin-top: 40px;
+    }
     .merchants-list {
-        margin: 0 auto;
       flex-direction: row;
       flex-wrap: wrap;
     }
@@ -119,5 +127,32 @@
         text-align: left;
         color: #cefd15;
     }
+
+    .section-heading {
+        padding: 60px 40px;
+        border-radius: 10px;
+        border-bottom-right-radius: 60px;
+        background-color: #0d0d0d;
+        width: max-content;
+        font-size: 32px;
+        font-weight: 700;
+        font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        z-index: 4;
+    }
+    .hero {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    .caring-image {
+        width: 400px;
+        object-fit: contain;
+        transform: scale(1.5) translate(-70px, 30px);
+        z-index: 1;
+    }
   }
+
+  
   

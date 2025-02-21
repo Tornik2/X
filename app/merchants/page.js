@@ -7,7 +7,7 @@ async function fetchMerchants() {
   return [
     {
       id: 1,
-      name: ' Market',
+      name: 'Market',
       description: 'Sustainable Groceries & Local Products',
       about: 'GreenEarth Market sources fresh, organic produce and eco-friendly products, promoting a healthier planet and community.',
       image: '/merchant1.jpg',
@@ -15,7 +15,7 @@ async function fetchMerchants() {
     },
     {
       id: 2,
-      name: 'EcoStyle Fashion',
+      name: 'EcoStyleFashion',
       description: 'Ethical Clothing & Accessories',
       about: 'EcoStyle Fashion designs stylish apparel using recycled materials and sustainable production methods, ensuring ethical fashion for all.',
       image: '/merchant2.jpg',
@@ -24,7 +24,7 @@ async function fetchMerchants() {
     },
     {
       id: 3,
-      name: 'SolarTech Solutions',
+      name: 'SolarTechSolutions',
       description: 'Renewable Energy for Your Home',
       about: 'SolarTech Solutions provides cutting-edge solar panels and green energy solutions to help homes and businesses become energy independent.',
       image: '/merchant3.jpg',
@@ -40,13 +40,22 @@ export default async function Merchants() {
   return (
     <div className="container">
         <div className='max-width'>
-      {/* Merchants Header */}
+            
+        <div className='hero'>
+            <div className="section-heading">
+            Welcome to ESG 
+            <br/>
+             merchants!
+            </div>
+            <Image src="/caring.png" alt="taking care of nature" width={400} height={250} className="caring-image" />
+        </div>
+
       <header className="header">
         <h1 className="page-title">Merchants</h1>
         <p className="subtitle">Explore exciting merchandise offered by our partnered stores  , offering environmentally clean items! Be part of shaping a better future!</p>
       </header>
-      
-      {/* Merchants List */}
+
+            {/* Merchants section*/}
       <section className="merchants-list">
         {merchants.map((merchant) => (
           <div key={merchant.id} className="merchant-card">
@@ -58,7 +67,7 @@ export default async function Merchants() {
               </div>
               <p className='sub-title'>About This Merchant</p>
               <p className="merchant-about">{merchant.about}</p>
-              <Link className="visit-button" href={`/${merchant.name}`}>View Merchandise</Link>
+              <Link className="visit-button" href={`merchants/${merchant.name}`}>View Merchandise</Link>
             </div>
           </div>
         ))}
