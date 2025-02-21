@@ -12,7 +12,7 @@ button, a {
 
 body {
   font-family: 'Inter', sans-serif;
-  background: black; /* Matches your design */
+  background: #1a1a1a; /* Matches your design */
   color: white; /* Ensures readability */
 }
 
@@ -27,6 +27,7 @@ body {
 header {
   box-shadow: 0px 10px 20px rgba(255, 255, 255, 0.05); /* White shadow at the bottom */
   margin-bottom: 20px;
+  background-color: black;
 }
 
 .max-width {

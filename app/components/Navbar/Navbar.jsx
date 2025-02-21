@@ -9,6 +9,7 @@ export default function Navbar() {
 
   return (
     <nav className="navbar max-width">
+      
       <div className="logo">
         <Link href="/">YourBanK</Link>
       </div>
@@ -53,6 +54,7 @@ export default function Navbar() {
         <Link href="/register" className="signup">Sign Up</Link>
         <Link href="/login" className="login-button">Login</Link>
       </div>
+      
     </nav>
   );
 }
