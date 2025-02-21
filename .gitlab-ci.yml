@@ -21,12 +21,10 @@ deploy:
     stage: deploy
     before_script:
         - touch bastion_key
-        - touch private_key
         - echo "$SSH_KEY_VACHE" > bastion_key && chmod 600 bastion_key
-        - echo "$SSH_KEY_VACHE" > private_key && chmod 600 private_key
 
     script:
-      - ssh -o StrictHostKeyChecking=no -i bastion_key ubuntu@3.67.225.250 "ssh -o StrictHostKeyChecking=no -i private_key ubuntu@10.0.4.113  'docker login -u $REGISTRY_USER -p $REGISTRY_PASSWORD &
+      - ssh -o StrictHostKeyChecking=no -i bastion_key ubuntu@3.67.225.250 "ssh -o StrictHostKeyChecking=no -i ~/.ssh/ec1-1a-web.pem ubuntu@10.0.4.113  'docker login -u $REGISTRY_USER -p $REGISTRY_PASSWORD &
         docker pull $REGISTRY_USER/$FRONT_DOCKER_IMAGE_NAME:$FRONT_DOCKER_IMAGE_TAG &&
         docker ps -q --filter "publish=3000" | xargs -I {} docker stop {} &&
         docker run -d -p 3000:3000 $REGISTRY_USER/$FRONT_DOCKER_IMAGE_NAME:$FRONT_DOCKER_IMAGE_TAG'"
