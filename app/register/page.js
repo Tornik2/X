@@ -1,6 +1,6 @@
-import "./register.css"; 
-import { FcGoogle } from "react-icons/fc"; 
-import { Facebook, Apple } from "lucide-react"; 
+import "./register.css"; // Import styles
+import { FcGoogle } from "react-icons/fc"; // Google icon
+import { Facebook, Apple } from "lucide-react"; // Facebook & Apple icons from Lucide
 
 export default function RegisterPage() {
   return (
@@ -10,21 +10,25 @@ export default function RegisterPage() {
         Join our community today! Create an account to unlock exclusive features and personalized experiences.
       </p>
 
-      <div className="input-group">
-        <input type="text" placeholder="Enter First Name" />
+      <div className="input-row">
+        <div className="input-group">
+          <input type="text" placeholder="Enter First Name" />
+        </div>
+        <div className="input-group">
+          <input type="text" placeholder="Enter Last Name" />
+        </div>
       </div>
-      <div className="input-group">
-        <input type="text" placeholder="Enter Last Name" />
-      </div>
-      <div className="input-group">
-        <input type="email" placeholder="Enter your Email" />
-      </div>
-      <div className="input-group">
-        <input type="password" placeholder="Enter your Password" />
+
+      <div className="input-row">
+        <div className="input-group">
+          <input type="email" placeholder="Enter your Email" />
+        </div>
+        <div className="input-group">
+          <input type="password" placeholder="Enter your Password" />
+        </div>
       </div>
 
       <button className="primary-button">Sign Up</button>
-      <button className="secondary-button">Login</button>
 
       <p className="or-text">Or Continue with</p>
 
