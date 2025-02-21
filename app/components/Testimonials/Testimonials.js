@@ -1,5 +1,5 @@
 "use client";
-import "./testimonials.css";
+import "./Testimonials.css";
 
 const testimonials = [
   {
