@@ -1,0 +1,174 @@
+.navbar {
+    background: black;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    position: relative;
+  }
+  
+  .logo a {
+    font-size: 20px;
+    font-weight: bold;
+    color: #d4ff00;
+    text-decoration: none;
+  }
+  
+  .menu-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    position: relative;
+    z-index: 1100;
+    cursor: pointer;
+  }
+  
+  .menu-icon {
+    width: 50px;
+    height: 50px;
+    background: #d4ff00;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .mobile-nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    height: 100vh;
+    background: black;
+    display: flex;
+    flex-direction: column;
+    
+    padding: 20px;
+    transition: right 0.4s ease-in-out;
+    z-index: 1000;
+  }
+  
+  .mobile-nav.open {
+    right: 0;
+  }
+  
+  .mobile-nav ul {
+    margin-top: 80px;
+    list-style: none;
+    padding: 0;
+    width: 100%;
+  }
+  
+  .mobile-nav li {
+    margin-bottom: 15px;
+  }
+  
+  .mobile-nav a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 0;
+
+  }
+  
+  .close-button {
+    cursor: pointer;
+
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    z-index: 1200;
+  }
+  
+  .mobile-auth {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  .mobile-auth a {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .mobile-auth .login-button {
+    background: #d4ff00;
+    color: black;
+    padding: 10px 18px;
+    border-radius: 20px;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  /* Desktop Nav */
+  .nav-links,
+  .auth-links {
+    display: none;
+  }
+  
+  @media (min-width: 768px) {
+    /* Hide Mobile Menu */
+    .mobile-nav {
+      display: none ;
+    }
+  
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+  
+    .nav-links li {
+      list-style: none;
+    }
+  
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      font-size: 16px;
+      padding: 8px 16px;
+      border-radius: 20px;
+      transition: background 0.3s ease-in-out;
+    }
+  
+    .nav-links .active a {
+      background: rgba(255, 255, 255, 0.1);
+    }
+  
+    .auth-links {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+  
+    .auth-links .signup {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+    }
+  
+    .auth-links .login-button {
+      background: #d4ff00;
+      color: black;
+      padding: 10px 18px;
+      border-radius: 20px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: opacity 0.3s;
+    }
+  
+    .auth-links .login-button:hover {
+      opacity: 0.8;
+    }
+  
+    .menu-button {
+      display: none;
+    }
+  }
+  
