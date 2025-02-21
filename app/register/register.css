@@ -5,14 +5,14 @@
     text-align: center;
     padding: 20px;
     color: white;
-    background: black;
+    background: rgba(255, 255, 255, 0.05);
   }
   
   .register-title {
     font-size: 26px;
     font-weight: bold;
     color: #d4ff00;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
   }
   
   .register-subtitle {
