@@ -50,7 +50,7 @@ export default function Navbar() {
         <li className="active"><Link href="/">Home</Link></li>
         <li><Link href="/login">Careers</Link></li>
         <li><Link href="/login">About</Link></li>
-        <li><Link href="/register">Security</Link></li>
+        <li><Link href="/merchants">Merchants</Link></li>
       </ul>
 
       <div className="auth-links">
