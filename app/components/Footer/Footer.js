@@ -1,5 +1,7 @@
 import "./Footer.css";
 import { Facebook, Twitter, Linkedin } from "lucide-react";
+import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -7,7 +9,11 @@ export default function Footer() {
         <div className="max-width">
       <div className="footer-top">
         <div className="footer-left">
-          <h3 className="footer-logo">YourBank</h3>
+        <div className="logo">
+        <Link href="/" className="logo-link">
+        <Image src="/logo-main.png" width={20} height={20}alt="YourBank" />
+        YourBanK</Link>
+      </div>
           <div className="social-icons">
             <a href="#"><Facebook size={24} /></a>
             <a href="#"><Twitter size={24} /></a>

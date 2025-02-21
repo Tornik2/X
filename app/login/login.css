@@ -139,5 +139,9 @@
       flex-direction: row;
       gap: 20px;
       margin: 10px;
+      max-width: 80%;
+    }
+    .primary-button {
+      width: 400px;
     }
   }

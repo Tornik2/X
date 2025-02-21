@@ -96,3 +96,18 @@
     }
   }
   
+  .logo-link {
+    display: flex;
+    align-items: center;
+    gap: 1px;
+  }
+  .logo img {
+    width: 20px;
+    height: 20px;
+  }
+  .logo a {
+    font-size: 20px;
+    font-weight: bold;
+    color: #d4ff00;
+    text-decoration: none;
+  }

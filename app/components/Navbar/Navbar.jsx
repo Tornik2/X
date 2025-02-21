@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import "./Navbar.css";
+import Image from "next/image";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -11,7 +12,9 @@ export default function Navbar() {
     <nav className="navbar max-width">
       
       <div className="logo">
-        <Link href="/">YourBanK</Link>
+        <Link href="/" className="logo-link">
+        <Image src="/logo-main.png" width={20} height={20}alt="YourBank" />
+        YourBanK</Link>
       </div>
 
       {/* BurgerMenu */}
@@ -45,9 +48,9 @@ export default function Navbar() {
       {/* Nav for Desktop */}
       <ul className="nav-links">
         <li className="active"><Link href="/">Home</Link></li>
-        <li><Link href="/careers">Careers</Link></li>
-        <li><Link href="/about">About</Link></li>
-        <li><Link href="/security">Security</Link></li>
+        <li><Link href="/login">Careers</Link></li>
+        <li><Link href="/login">About</Link></li>
+        <li><Link href="/register">Security</Link></li>
       </ul>
 
       <div className="auth-links">
