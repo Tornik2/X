@@ -8,7 +8,7 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="navbar">
+    <nav className="navbar max-width">
       <div className="logo">
         <Link href="/">YourBanK</Link>
       </div>

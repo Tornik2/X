@@ -19,6 +19,7 @@ const testimonials = [
 export default function Testimonials() {
   return (
     <section className="testimonials-section">
+        <div className="max-width">
       <div className="testimonials-header">
         <h2>
           Our <span>Testimonials</span>
@@ -38,6 +39,7 @@ export default function Testimonials() {
             <p className="testimonial-name">{testimonial.name}</p>
           </div>
         ))}
+      </div>
       </div>
     </section>
   );
