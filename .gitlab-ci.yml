@@ -1,0 +1,32 @@
+stages:
+  - build
+  - deploy
+
+variables:
+  FRONT_DOCKER_IMAGE_NAME: react_image
+  FRONT_DOCKER_IMAGE_TAG: main_branch
+docker-build:
+  image: docker:cli
+  stage: build
+  services:
+    - docker:dind
+  before_script:
+    - docker login -u $REGISTRY_USER -p $REGISTRY_PASSWORD
+  script:
+      - docker build --build-arg NEXT_PUBLIC_API_BASE_URL="$NEXT_PUBLIC_API_BASE_URL" -t $FRONT_DOCKER_IMAGE_NAME .
+      - docker tag $FRONT_DOCKER_IMAGE_NAME $REGISTRY_USER/$FRONT_DOCKER_IMAGE_NAME:$FRONT_DOCKER_IMAGE_TAG
+      - docker push $REGISTRY_USER/$FRONT_DOCKER_IMAGE_NAME:$FRONT_DOCKER_IMAGE_TAG
+
+deploy:
+    stage: deploy
+    before_script:
+        - touch bastion_key
+        - touch private_key
+        - echo "$SSH_KEY_VACHE" > bastion_key && chmod 600 bastion_key
+        - echo "$SSH_KEY_VACHE" > private_key && chmod 600 private_key
+
+    script:
+      - ssh -o StrictHostKeyChecking=no -i bastion_key ubuntu@3.67.225.250 "ssh -o StrictHostKeyChecking=no -i private_key ubuntu@10.0.4.113  'docker login -u $REGISTRY_USER -p $REGISTRY_PASSWORD &
+        docker pull $REGISTRY_USER/$FRONT_DOCKER_IMAGE_NAME:$FRONT_DOCKER_IMAGE_TAG &&
+        docker ps -q --filter "publish=3000" | xargs -I {} docker stop {} &&
+        docker run -d -p 3000:3000 $REGISTRY_USER/$FRONT_DOCKER_IMAGE_NAME:$FRONT_DOCKER_IMAGE_TAG'"
