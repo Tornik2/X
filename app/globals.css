@@ -6,12 +6,10 @@
 }
 
 /* Remove default button styles */
-button {
-  all: unset;
+button, a {
   cursor: pointer;
 }
 
-/* Set a consistent font for the whole project */
 body {
   font-family: 'Inter', sans-serif;
   background: black; /* Matches your design */
@@ -27,12 +25,7 @@ body {
   padding: 20px;
 }
 
-/* Typography */
-h1, h2, h3 {
-  font-weight: bold;
-}
-
-p {
-  opacity: 0.9;
-  font-size: 14px;
+header {
+  box-shadow: 0px 10px 20px rgba(255, 255, 255, 0.05); /* White shadow at the bottom */
+  margin-bottom: 20px;
 }
