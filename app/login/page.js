@@ -7,18 +7,18 @@ export default function LoginPage() {
     <div className="login-container">
       <h2 className="login-title">Login</h2>
       <p className="login-subtitle">Welcome back! Please log in to access your account.</p>
-
+<div className="input-row">
       <div className="input-group">
         <input type="email" placeholder="Enter your Email" />
       </div>
       <div className="input-group">
         <input type="password" placeholder="Enter your Password" />
       </div>
+      </div>
 
       <a href="#" className="forgot-password">Forgot Password?</a>
 
       <button className="primary-button">Login</button>
-      <button className="secondary-button">Sign Up</button>
 
       <p className="or-text">Or Continue with</p>
 
