@@ -5,8 +5,11 @@ import Link from "next/link";
 import "./Navbar.css";
 import Image from "next/image";
 import ThemeToggleBtn from "../ThemeToggleBtn/ThemeToggleBtn";
+import { useAuth } from "../../context/AuthContext";
 
 export default function Navbar() {
+  const { user, loading } = useAuth();
+  console.log(user)
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (

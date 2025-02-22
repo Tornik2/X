@@ -33,11 +33,10 @@ export default function LoginPage() {
       console.log(data)
       if (!response.ok) throw new Error("Login failed");
 
-      alert("Login successful!");
       // IF RESPONSE OK ...
       router.push("/");
     } catch (err) {
-      alert(err.message);
+      console.log(err);
     } finally {
       setLoading(false);
     }

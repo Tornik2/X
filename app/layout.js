@@ -4,7 +4,8 @@ import Navbar from "./components/Navbar/Navbar";
 import Testimonials from "./components/Testimonials/Testimonials";
 import Footer from "./components/Footer/Footer";
 
-import { ThemeProvider } from "./context/ThemeContext";
+import { ThemeProvider  } from "./context/ThemeContext";
+import {  AuthProvider  } from "./context/AuthContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,16 +23,19 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <ThemeProvider>
+          <AuthProvider>
         <header className="light-header">
       <Navbar/>
       </header >
         {children}
         <Testimonials />
       <Footer />
+      </AuthProvider>
       </ThemeProvider>
       </body>
     </html>
