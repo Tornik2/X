@@ -9,7 +9,7 @@ import './merchants.css';
 const API_URL = process.env.NEXT_PUBLIC_API_BASE_URL; // Use environment variable
 
 // Fetch merchants from API
-async function fetchMerchants(token) {
+async function fetchMerchants(token,) {
   try {
     const response = await fetch(`${API_URL}/merchants`, {
       method: "GET",
@@ -84,7 +84,7 @@ export default function Merchants() {
               </div>
               <p className='sub-title'>About This Merchant</p>
               <p className="merchant-about">{merchant.description}</p>
-              <Link className="visit-button" href={`merchants/${merchant.name}`}>View Merchandise</Link>
+              <Link className="visit-button" href={`merchants/${merchant.id}`}>View Merchandise</Link>
             </div>
           </div>
         ))}
