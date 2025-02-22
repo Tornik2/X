@@ -20,7 +20,9 @@ export default function Navbar() {
       
       {/* BurgerMenu */}
       <div className="mobile-menu">
+        <div className="toggle">
       <ThemeToggleBtn />
+      </div>
       <button className="menu-button" onClick={() => setMenuOpen(!menuOpen)}>
         <div className="menu-icon">
           {menuOpen ? (

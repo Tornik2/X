@@ -9,7 +9,7 @@
   }
   .light .navbar {
     background: #3a3a3a;  
-    color:   white     
+    color:   white;    
 }
   
   .logo a {
@@ -121,6 +121,9 @@
     /* Hide Mobile Menu */
     .mobile-nav {
       display: none ;
+    }
+    .toggle {
+      display: none;
     }
   
     .nav-links {
