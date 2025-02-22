@@ -17,17 +17,10 @@ export default function Navbar() {
   const pathname = usePathname(); // current pathname
 
 
-  const handleLogout = async () => {
-    try {
-      const res = await fetch("api/auth/logout", {
-      });
-      if (res.ok) {
-        await refreshUser();
-        router.push("/login");
-      }
-    } catch (error) {
-      console.error("Logout error:", error);
-    }
+  const handleLogout = () => {
+    localStorage.removeItem("token"); // Remove the token
+    refreshUser(); // Refresh the user
+    router.push("/login"); // Redirect to login page
   };
   
 
