@@ -50,7 +50,7 @@ export default async function Merchants() {
             <Image src="/caring.png" alt="taking care of nature" width={400} height={250} className="caring-image" />
         </div>
 
-      <header className="header">
+      <header className="merchants-header">
         <h1 className="page-title">Merchants</h1>
         <p className="subtitle">Explore exciting merchandise offered by our partnered stores  , offering environmentally clean items! Be part of shaping a better future!</p>
       </header>

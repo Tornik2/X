@@ -5,15 +5,28 @@
     flex-direction: column;
     align-items: center;
   }
-  .header  {
+  .merchants-header  {
+    margin-top: 40px;
     background-color: #191919;
-
   }
+  .light .merchants-header {
+    background-color: transparent;
+    box-shadow: 0 0 5px #e1e1e1;
+    color: #333;
+    box-shadow: none;  }
+
   .page-title {
     font-size: 24px;
     font-weight: bold;
     text-align: center;
     margin-bottom: 15px;
+  }
+  .light .page-title {
+    color: #8abf00;
+  }
+  .light .subtitle {
+    color: #333;
+    opacity: 1;
   }
   
   .subtitle {
@@ -46,6 +59,14 @@
   .merchant-card:hover {
     box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
   }
+  .light .merchant-card {
+    background-color: transparent;
+    color: #222;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  }
+  .light .merchant-card:hover {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.07);
+  }
   
   .merchant-image {
     border-radius: 10px;
@@ -71,6 +92,11 @@
     padding: 5px 10px;
     border-radius: 10px;
   }
+  .light .merchant-value p {
+    color: #333;
+    background-color: #e1e1e1;
+    border: 1px solid #ccc;
+  }
   .sub-title {
     font-weight: 900;
   }
@@ -78,7 +104,9 @@
     font-size: 18px;
   }
   
-
+  .light .merchant-name {
+    color: #222;
+  }
   
   .merchant-about {
     font-size: 13px;
@@ -87,7 +115,9 @@
     margin-top: 5px;
     line-height: 1.3;
   }
-  
+  .light .merchant-about {
+    color: #333;
+  }
 
   .visit-button {
     text-decoration: none;
@@ -103,6 +133,12 @@
   }
   .visit-button:hover {
     background: #d4ff00;
+  }
+  .light .visit-button {
+    color: white;
+  }
+  .light .visit-button:hover {
+    background: #334702;
   }
   
   .hero {
@@ -138,6 +174,9 @@
         font-weight: 700;
         font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
         z-index: 4;
+    }
+    .light .section-heading {
+      color: white
     }
     .hero {
         display: flex;
