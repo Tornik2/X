@@ -33,7 +33,10 @@ export default function LoginPage() {
 
       const data = await response.json();
       console.log(data)
-      if (!response.ok) throw new Error("Login failed");
+      if (!response.ok) {
+        setError(data.message || "Login failed");
+        throw new Error(data.message );
+      };
 
       // IF RESPONSE OK ...
       await refreshUser();

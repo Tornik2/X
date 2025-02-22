@@ -20,7 +20,7 @@ export async function POST(request) {
     console.log(data)
     if (!response.ok) {
       return NextResponse.json(
-        { message: data.message || "Registration failed" },
+        { message: data.password || data.email || "Registration failed" },
         { status: 400 }
       );
     }

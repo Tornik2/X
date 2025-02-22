@@ -17,8 +17,9 @@ export async function POST(request) {
     console.log('Login response data:', data);
 
     if (!response.ok) {
+        console.log(data.error)
       return NextResponse.json(
-        { message: data.message || "Login failed" },
+        { message: data.error || "Login failed" },
         { status: 400 }
       );
     }

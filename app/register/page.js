@@ -5,10 +5,10 @@ import "./register.css"; // Import styles
 import { FcGoogle } from "react-icons/fc"; // Google icon
 import { Facebook, Apple } from "lucide-react"; // Facebook & Apple icons from Lucide
 import { useRouter } from "next/navigation"; // Import Next.js router
-
-const API_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+import { useAuth } from "../context/AuthContext"; // 
 
 export default function RegisterPage() {
+  const { refreshUser } = useAuth(); // Get the refreshUser function from the AuthContext
   const router = useRouter(); 
   const [formData, setFormData] = useState({
     "first_name": "",
@@ -44,9 +44,10 @@ export default function RegisterPage() {
       }
 
       // IF RESPONSE OK ...............
-      
+      await refreshUser();
       router.push("/");
     } catch (err) {
+      //set error and clear email and password
       setError(err.message);
       setFormData({
         "first_name": formData.first_name,
