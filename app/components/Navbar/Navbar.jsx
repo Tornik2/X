@@ -57,7 +57,7 @@ export default function Navbar() {
         <ul>
           <li className={`${pathname === "/" ? "active" : ""}`}><Link href="/" onClick={() => setMenuOpen(false)}>Home</Link></li>
           <li className={`${pathname === "/leaderboard" ? "active" : ""}`}><Link href="/leaderboard" onClick={() => setMenuOpen(false)}>Leaderboard</Link></li>
-          <li className={`${pathname === "/about" ? "active" : ""}`}><Link href="/register" onClick={() => setMenuOpen(false)}>About</Link></li>
+          <li className={`${pathname === "/transactions" ? "active" : ""}`}><Link href="/transactions" onClick={() => setMenuOpen(false)}>Transactions</Link></li>
           <li className={`${pathname === "/merchants" ? "active" : ""}`}><Link href="/merchants" onClick={() => setMenuOpen(false)}>Merchants</Link></li>
         </ul>
 
@@ -100,7 +100,7 @@ export default function Navbar() {
       <ul className="nav-links">
         <li className={`${pathname === "/" ? "active" : ""}`}><Link href="/">Home</Link></li>
         <li className={`${pathname === "/leaderboard" ? "active" : ""}`}><Link href="/leaderboard">Leaderboard</Link></li>
-        <li className={`${pathname === "/about" ? "active" : ""}`}><Link href="/login">About</Link></li>
+        <li className={`${pathname === "/transactions" ? "active" : ""}`}><Link href="/login">Transactions</Link></li>
         <li className={`${pathname === "/merchants" ? "active" : ""}`}><Link href="/merchants">Merchants</Link></li>
         <ThemeToggleBtn />
       </ul>
