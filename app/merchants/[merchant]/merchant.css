@@ -1,40 +1,37 @@
 .merchant-container {
     padding: 20px;
-    background-color: #111; /* Dark background */
-    color: #fff; /* Light text */
+    background-color: #111;
+    color: #fff; 
     font-family: Arial, sans-serif;
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   }
 
   .light .merchant-container {
-    background-color: #f7f7f7; /* Light background */
-    color: #333; /* Dark text */
+    background-color: #f7f7f7;
+    color: #333;
   }
   
-  /* Merchant title */
   .merchant-title {
     font-size: 28px;
     font-weight: bold;
     text-align: center;
     margin-bottom: 10px;
-    color: #b3ff00; /* Green color */
+    color: #b3ff00;
   }
   .light .merchant-title {
-    color: #607826; /* Dark text */
+    color: #607826; 
   }
-  /* Merchant description */
   .merchant-description {
     text-align: center;
     font-size: 14px;
-    color: #ccc; /* Light gray text */
+    color: #ccc; 
     margin-bottom: 20px;
   }
   .light .merchant-description {
-    color: #666; /* Dark gray text */
+    color: #666; 
   }
   
-  /* Merchandise title */
   .merchandise-title {
     font-size: 20px;
     font-weight: bold;
@@ -43,37 +40,34 @@
   }
  
   
-  /* Product list container (flexbox layout) */
   .products-list {
     display: flex;
-    flex-direction: column; /* Default: Stack products in a column */
-    gap: 20px; /* Space between items */
+    flex-direction: column; 
+    gap: 20px; 
     width: 100%;
+    margin-top: 10px;
   }
   
-  /* Product card container */
   .product-card {
-    background-color: #1a1a1a; /* Dark gray */
+    background-color: #1a1a1a; 
     border-radius: 10px;
     padding: 15px;
     box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center content on mobile */
+    align-items: center; 
     text-align: center;
   }
   
-  /* Product image */
   .product-image {
-    width: 100%; /* Fully responsive */
+    width: 100%; 
     height: auto;
     max-height: 200px;
     object-fit: cover;
     border-radius: 10px;
-    background-color: #222; /* Placeholder background */
+    background-color: #222; 
   }
   
-  /* Product title */
   .product-name {
     font-size: 18px;
     font-weight: bold;
@@ -82,17 +76,15 @@
 
   }
   .light .product-name {
-    color: #fff9f9; /* Dark text */
+    color: #fff9f9; 
   }
   
-  /* Product price */
   .product-price {
     font-size: 14px;
-    color: #aaa; /* Light gray */
+    color: #aaa;
     margin-bottom: 10px;
   }
   
-  /* Purchase button */
   .purchase-button {
     width: 100%;
     padding: 12px;
@@ -101,37 +93,50 @@
     text-align: center;
     border: none;
     border-radius: 20px;
-    background-color: #b3ff00; /* Neon green */
+    background-color: #b3ff00; 
     color: black;
     cursor: pointer;
     transition: background 0.3s;
   }
   
   .purchase-button:hover {
-    background-color: #99e600; /* Darker green */
+    background-color: #99e600;
   }
   
-  /* ====== MEDIA QUERY: min-width 768px (TABLETS & DESKTOPS) ====== */
   @media (min-width: 768px) {
     .products-list {
-      flex-direction: row; /* Switch to row layout */
-      justify-content: center; /* Center products in container */
+      flex-direction: row; 
+      justify-content: center; 
     }
   
     .product-card {
-      flex: 1; /* Allow flexible width */
-      max-width: 320px; /* Prevent it from getting too wide */
+      flex: 1; 
+      max-width: 320px; 
       text-align: left;
     }
   
     .product-image {
       max-width: 100%;
-      max-height: 250px; /* Allow bigger images */
+      max-height: 250px; 
     }
   
     .purchase-button {
-      width: auto; /* Allow button to size dynamically */
+      width: auto;
       max-width: 250px;
     }
+  }
+  
+  .status-message {
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  .status-message.success {
+    color: #b3ff00; 
+  }
+  .status-message.error {
+    color: #ff4444; 
   }
   
