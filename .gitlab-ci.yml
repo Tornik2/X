@@ -25,6 +25,7 @@ deploy:
 
     script:
       - ssh -o StrictHostKeyChecking=no -i bastion_key ubuntu@3.67.225.250 "ssh -o StrictHostKeyChecking=no -i ~/.ssh/ec1-1a-web.pem ubuntu@10.0.4.113  'docker login -u $REGISTRY_USER -p $REGISTRY_PASSWORD &
+        docker system prune -af &&
         docker pull $REGISTRY_USER/$FRONT_DOCKER_IMAGE_NAME:$FRONT_DOCKER_IMAGE_TAG &&
         docker ps -q --filter "publish=3000" | xargs -I {} docker stop {} &&
         docker run -d -p 3000:3000 $REGISTRY_USER/$FRONT_DOCKER_IMAGE_NAME:$FRONT_DOCKER_IMAGE_TAG'"
