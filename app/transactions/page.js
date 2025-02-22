@@ -12,8 +12,47 @@ const API_URL = process.env.NEXT_PUBLIC_API_BASE_URL; // Use environment variabl
 
 
 export default function Merchants() {
-  
-
+    const [transactions, setTransactions] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState("");
+    
+    useEffect(() => {
+        const fetchTransactions = async () => {
+          try {
+            const token = localStorage.getItem("token");
+    
+            if (!token) {
+              console.error("User not authenticated.");
+              setError("User not authenticated.");
+              setLoading(false);
+              return;
+            }
+    
+            const response = await fetch(`${API_URL}/transactions/`, {
+              method: "GET",
+              headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json",
+              },
+            });
+    
+            if (!response.ok) {
+              throw new Error("Failed to fetch transactions");
+            }
+    
+            const data = await response.json();
+            console.log("Transactions Data:", data); // ✅ Logs the response
+            setTransactions(data);
+          } catch (err) {
+            console.error("Transactions fetch error:", err);
+            setError("Failed to load transactions.");
+          } finally {
+            setLoading(false);
+          }
+        };
+    
+        fetchTransactions();
+      }, []);
   
   return (
     <div className="container">
