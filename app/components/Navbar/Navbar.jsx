@@ -113,7 +113,7 @@ export default function Navbar() {
       </ul>
         <div className="top-right">
         {user && <div><p className="esgc-count">ESGC: {user.available_esg_coins}</p> </div>}
-
+        
       <div className="auth-links">
         {user ? (
           <button className="login-button" style={{marginLeft: "60px"}} onClick={ () =>  handleLogout()}>

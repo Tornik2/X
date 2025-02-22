@@ -7,7 +7,7 @@ import "./login.css";
 import { useRouter } from "next/navigation"; // 
 import { useAuth } from "../context/AuthContext";
 
-
+const API_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 export default function LoginPage() {
   const { refreshUser } = useAuth();
@@ -23,25 +23,25 @@ export default function LoginPage() {
     setLoading(true);
 
     try {
-      const response = await fetch(`api/auth/login`, {
+      const response = await fetch(`${API_URL}/login/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ email, password }),
       });
-
+      console.log(JSON.stringify({ email, password }))
       const data = await response.json();
-      console.log(data)
       if (!response.ok) {
-        setError(data.message || "Login failed");
-        throw new Error(data.message );
+        setError(data.error || "Login failed");
+        throw new Error(data.message || "Login failed");
       };
 
       // IF RESPONSE OK ...
       await refreshUser();
       router.push("/");
     } catch (err) {
+      console.log(err, err.message)
       setError(err.message);
     } finally {
       setLoading(false);
@@ -53,7 +53,7 @@ console.log(error)
       <h2 className="login-title">Login</h2>
       <p className="login-subtitle">Welcome back! Please log in to access your account.</p>
 <div className="input-row">
-{error ? <p className="error-message">{error}</p> : null}
+          {error ? <p className="error-message">{error}</p> : null}
 
       <div className="input-group">
       <input

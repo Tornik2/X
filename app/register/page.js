@@ -7,6 +7,9 @@ import { Facebook, Apple } from "lucide-react"; // Facebook & Apple icons from L
 import { useRouter } from "next/navigation"; // Import Next.js router
 import { useAuth } from "../context/AuthContext"; // 
 
+const API_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+
+
 export default function RegisterPage() {
   const { refreshUser } = useAuth(); // Get the refreshUser function from the AuthContext
   const router = useRouter(); 
@@ -30,7 +33,7 @@ export default function RegisterPage() {
     setError("");
 
     try {
-      const response = await fetch(`api/auth/register`, {
+      const response = await fetch(`${API_URL}/register/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
