@@ -42,6 +42,8 @@ export default function Navbar() {
       
       {/* BurgerMenu */}
       <div className="mobile-menu">
+        {user && <div><p className="esgc-count-mobile">ESGC: {user.available_esg_coins}</p> </div>}
+        
         <div className="toggle">
       <ThemeToggleBtn />
       </div>
@@ -109,6 +111,8 @@ export default function Navbar() {
         <li className={`${pathname === "/merchants" ? "active" : ""}`}><Link href="/merchants">Merchants</Link></li>
         <ThemeToggleBtn />
       </ul>
+        <div className="top-right">
+        {user && <div><p className="esgc-count">ESGC: {user.available_esg_coins}</p> </div>}
 
       <div className="auth-links">
         {user ? (
@@ -121,6 +125,7 @@ export default function Navbar() {
             <Link href="/login" className="login-button">Login</Link>
           </>
         )}
+      </div>
       </div>
     </nav>
   );

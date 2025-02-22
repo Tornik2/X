@@ -202,3 +202,25 @@ gap: 10px;  }
 .mobile-nav .active {
   background-color: #bfb7b7;
 }
+
+.esgc-count-mobile {
+  color: #d4ff00;
+  font-weight: 700;
+  margin-right: 20px;
+}
+.esgc-count {
+  color: #d4ff00;
+  font-weight: 700;
+  margin-right: 20px;
+}
+@media (min-width: 768px) {
+  .esgc-count-mobile {
+    display: none;
+  }
+
+}
+.top-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
