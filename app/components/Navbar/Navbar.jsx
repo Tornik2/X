@@ -6,11 +6,30 @@ import "./Navbar.css";
 import Image from "next/image";
 import ThemeToggleBtn from "../ThemeToggleBtn/ThemeToggleBtn";
 import { useAuth } from "../../context/AuthContext";
+import { useRouter } from "next/navigation";
+
+const API_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+
 
 export default function Navbar() {
-  const { user, loading } = useAuth();
-  console.log(user)
+  const { user, refreshUser } = useAuth();
   const [menuOpen, setMenuOpen] = useState(false);
+  const router = useRouter();
+
+
+  const handleLogout = async () => {
+    try {
+      const res = await fetch("api/auth/logout", {
+      });
+      if (res.ok) {
+        await refreshUser();
+        router.push("/login");
+      }
+    } catch (error) {
+      console.error("Logout error:", error);
+    }
+  };
+  
 
   return (
     <nav className="navbar max-width">
@@ -52,8 +71,8 @@ export default function Navbar() {
                 {user ? (
           <button 
             className="login-button" 
-            onClick={() => {
-              // handleLogout();
+            onClick={ () => {
+               handleLogout();
               setMenuOpen(false);
             }}
           >
@@ -86,7 +105,7 @@ export default function Navbar() {
       {/* Nav for Desktop */}
       <ul className="nav-links">
         <li className="active"><Link href="/">Home</Link></li>
-        <li><Link href="/login">Careers</Link></li>
+        <li><Link href="/register">Careers</Link></li>
         <li><Link href="/login">About</Link></li>
         <li><Link href="/merchants">Merchants</Link></li>
         <ThemeToggleBtn />
@@ -94,7 +113,7 @@ export default function Navbar() {
 
       <div className="auth-links">
         {user ? (
-          <button className="login-button" onClick={() => {}}>
+          <button className="login-button" style={{marginLeft: "60px"}} onClick={ () =>  handleLogout()}>
             Log Out
           </button>
         ) : (

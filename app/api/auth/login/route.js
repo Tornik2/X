@@ -24,18 +24,23 @@ export async function POST(request) {
     }
 
     // Extract token
-    const token = data.access;
-
+    const accessToken = data.access;
+    const refreshToken = data.refresh;
     const res = NextResponse.json({ message: "Login successful" });
 
     // Set the token as an HttpOnly cookie.
-    res.cookies.set('token', token, {
+    res.cookies.set('accessToken', accessToken, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'strict',
       path: '/',
     });
-
+    res.cookies.set('refreshToken', refreshToken, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'strict',
+        path: '/',
+      });
 
     return res;
   } catch (error) {

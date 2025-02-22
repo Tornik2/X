@@ -5,11 +5,12 @@ import { Facebook, Apple } from "lucide-react"; // Lucide icons
 import { FcGoogle } from "react-icons/fc"; // Google icon
 import "./login.css";
 import { useRouter } from "next/navigation"; // 
+import { useAuth } from "../context/AuthContext";
 
 
-const API_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 export default function LoginPage() {
+  const { refreshUser } = useAuth();
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -34,6 +35,7 @@ export default function LoginPage() {
       if (!response.ok) throw new Error("Login failed");
 
       // IF RESPONSE OK ...
+      await refreshUser();
       router.push("/");
     } catch (err) {
       console.log(err);

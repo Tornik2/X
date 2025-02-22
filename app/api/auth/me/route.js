@@ -4,7 +4,7 @@ const API_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 export async function GET(request) {
   // get token from cookies
-  const token = request.cookies.get('token')?.value;
+  const token = request.cookies.get('accessToken')?.value;
   if (!token) {
     return NextResponse.json({ message: 'Not authenticated' }, { status: 401 });
   }

@@ -5,7 +5,7 @@ const API_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 export async function POST(request) {
   const body = await request.json();
-  // ... perform registration logic, e.g., saving the user ...
+  // ... perform registration logic
   console.log(body)
   try {
     const response = await fetch(`${API_URL}/register/`, {
@@ -28,8 +28,15 @@ export async function POST(request) {
     // IF RESPONSE OK ...
     const res = NextResponse.json({ message: "Registration successful" });
 
-    const token = data.access
-    res.cookies.set('token', token, {
+    const accessToken = data.access
+    const refreshToken = data.access
+    res.cookies.set('accessToken', accessToken, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'strict',
+      path: '/',
+    });
+    res.cookies.set('refreshToken', refreshToken, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'strict',
