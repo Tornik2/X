@@ -6,15 +6,15 @@ import "./Navbar.css";
 import Image from "next/image";
 import ThemeToggleBtn from "../ThemeToggleBtn/ThemeToggleBtn";
 import { useAuth } from "../../context/AuthContext";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 
-const API_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 
 export default function Navbar() {
   const { user, refreshUser } = useAuth();
   const [menuOpen, setMenuOpen] = useState(false);
   const router = useRouter();
+  const pathname = usePathname(); // current pathname
 
 
   const handleLogout = async () => {
@@ -30,6 +30,7 @@ export default function Navbar() {
     }
   };
   
+  console.log(router)
 
   return (
     <nav className="navbar max-width">
@@ -101,13 +102,12 @@ export default function Navbar() {
           
         </div>
       </div>
-
       {/* Nav for Desktop */}
       <ul className="nav-links">
-        <li className="active"><Link href="/">Home</Link></li>
-        <li><Link href="/leaderboard">Leaderboard</Link></li>
-        <li><Link href="/login">About</Link></li>
-        <li><Link href="/merchants">Merchants</Link></li>
+        <li className={`${pathname === "/" ? "active" : ""}`}><Link href="/">Home</Link></li>
+        <li className={`${pathname === "/leaderboard" ? "active" : ""}`}><Link href="/leaderboard">Leaderboard</Link></li>
+        <li className={`${pathname === "/about" ? "active" : ""}`}><Link href="/login">About</Link></li>
+        <li className={`${pathname === "/merchants" ? "active" : ""}`}><Link href="/merchants">Merchants</Link></li>
         <ThemeToggleBtn />
       </ul>
 

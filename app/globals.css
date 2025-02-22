@@ -41,3 +41,6 @@ header {
   max-width: 1100px;
   margin: auto;
 }
+.light {
+  transition: all 1s ease;
+}

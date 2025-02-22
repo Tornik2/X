@@ -6,6 +6,7 @@
     align-items: center;
     padding: 15px 20px;
     position: relative;
+    z-index: 1199;
   }
   .light .navbar {
     background: #3a3a3a;  
@@ -50,7 +51,6 @@
     display: flex;
     flex-direction: column;
     
-    padding: 20px;
     transition: right 0.4s ease-in-out;
     z-index: 1000;
   }
@@ -75,10 +75,11 @@
     color: white;
     text-decoration: none;
     font-size: 18px;
-    padding: 10px 0;
-
+    padding: 10px 20px;
   }
-  
+  .mobile-nav a:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
   .close-button {
     cursor: pointer;
 
@@ -110,7 +111,9 @@
     font-weight: bold;
     text-align: center;
   }
-  
+  .mobile-auth .login-button:hover {
+    background-color: #e5e5e5;
+  }
   /* Desktop Nav */
   .nav-links,
   .auth-links {
@@ -195,3 +198,7 @@
     align-items: center;
 gap: 10px;  }
 
+
+.mobile-nav .active {
+  background-color: #bfb7b7;
+}
