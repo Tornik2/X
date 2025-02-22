@@ -39,15 +39,22 @@ export default function RegisterPage() {
       });
       const data = await response.json();
       if (!response.ok) {
+        setError(data.message || "Registration failed");
         throw new Error(data.message || "Registration failed");
       }
 
       // IF RESPONSE OK ...............
-      console.log(data)
+      
       router.push("/");
     } catch (err) {
       setError(err.message);
-      alert(err.message)
+      setFormData({
+        "first_name": formData.first_name,
+        "last_name": formData.last_name,
+        "email": "",
+        "password": "",
+      })
+      
     } finally {
       setLoading(false);
     }
@@ -61,6 +68,7 @@ export default function RegisterPage() {
       </p>
 
       <div className="input-row">
+        {error ? <p className="error-message">{error}</p> : null}
         <div className="input-group">
           <input
               type="text"

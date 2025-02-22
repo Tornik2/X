@@ -15,6 +15,7 @@ export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -38,17 +39,19 @@ export default function LoginPage() {
       await refreshUser();
       router.push("/");
     } catch (err) {
-      console.log(err);
+      setError(err.message);
     } finally {
       setLoading(false);
     }
   };
-
+console.log(error)
   return (
     <form onSubmit={handleLogin} className="login-container">
       <h2 className="login-title">Login</h2>
       <p className="login-subtitle">Welcome back! Please log in to access your account.</p>
 <div className="input-row">
+{error ? <p className="error-message">{error}</p> : null}
+
       <div className="input-group">
       <input
               type="email"
