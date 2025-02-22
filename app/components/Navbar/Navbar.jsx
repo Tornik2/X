@@ -30,7 +30,6 @@ export default function Navbar() {
     }
   };
   
-  console.log(router)
 
   return (
     <nav className="navbar max-width">
@@ -61,10 +60,10 @@ export default function Navbar() {
       <div className={`mobile-nav ${menuOpen ? "open" : ""}`}>
 
         <ul>
-          <li className="active"><Link href="/" onClick={() => setMenuOpen(false)}>Home</Link></li>
-          <li><Link href="/leaderboard" onClick={() => setMenuOpen(false)}>Leaderboard</Link></li>
-          <li><Link href="/register" onClick={() => setMenuOpen(false)}>About</Link></li>
-          <li><Link href="/merchants" onClick={() => setMenuOpen(false)}>Merchants</Link></li>
+          <li className={`${pathname === "/" ? "active" : ""}`}><Link href="/" onClick={() => setMenuOpen(false)}>Home</Link></li>
+          <li className={`${pathname === "/leaderboard" ? "active" : ""}`}><Link href="/leaderboard" onClick={() => setMenuOpen(false)}>Leaderboard</Link></li>
+          <li className={`${pathname === "/about" ? "active" : ""}`}><Link href="/register" onClick={() => setMenuOpen(false)}>About</Link></li>
+          <li className={`${pathname === "/merchants" ? "active" : ""}`}><Link href="/merchants" onClick={() => setMenuOpen(false)}>Merchants</Link></li>
         </ul>
 
         
