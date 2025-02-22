@@ -103,7 +103,21 @@
   }
   
   .topUser {
-    transform: translateY(-15px);
+    background-color: #b3ff00; /* Neon green */
+    color: black;
+    width: 100px;
+    height: 100px;
+    position: relative;
+    order: 1;
+    }
+    /* Left User (2nd Place) */
+.userCircle:nth-child(2) {
+    order: 0;
+  }
+  
+  /* Right User (3rd Place) */
+  .userCircle:nth-child(3) {
+    order: 3;
   }
 
   .leaderboard-hero {
