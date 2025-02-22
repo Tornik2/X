@@ -5,11 +5,19 @@
     flex-direction: column;
     border-radius: 20px;
     box-shadow: 0 0 0 0.1px #CAFF33;
-
-
+    
+  }
+  .light .esg-section {
+    background: #fffef2;       
+    color: #fcfcfc;     
+    border: 1px solid #caff33;       
+    box-shadow: 0 0 0 1.4px rgba(140, 143, 130, 0.5);
   }
   .esg-section h2{
     font-size: 16px;
+  }
+  .light .esg-section h2{
+    color: #333333 ;
   }
   
   .transactions {
@@ -20,7 +28,7 @@
     margin-top: 20px;
     height: 210px;
   }
-  
+
   .transaction-card {
     background: #222;
     padding: 20px;
@@ -47,8 +55,9 @@
   
   .transaction-card.faded:last-child {
     opacity: 0.3;
-    transform: translateY(180%);
-    z-index: 1;
+    transform: translateY(188%);
+    overflow: hidden;
+    z-index: 1 ;
     width: 70%;
     font-size: 0.8rem;
   }
@@ -120,6 +129,10 @@
     font-size: 14px;
     margin-bottom: 15px;
   }
+  .light .badge {
+    background: #a8a8a8;
+    color: #ffffff;
+  }
   
   h1 {
     font-size: 28px;
@@ -128,10 +141,17 @@
   .highlight {
     color: #aaff00;
   }
+  .light .highlight {
+    color: #8abf00 
+  }
   
   .description {
     font-size: 16px;
     margin: 15px 0;
+    line-height: 1.5;
+  }
+  .light .description {
+    color: #333333;
   }
   
   .cta-button {
@@ -144,7 +164,8 @@
     cursor: pointer;
   }
   .cta-button:hover {
-    background: #d4ff00;
+    background: #8abf00 ;
+    color: white;
   }
 
   @media (min-width: 768px) {
@@ -175,6 +196,10 @@
     }
     .transaction-card.faded {
         width: 74%;
+        }
+    
+        .esg-section {
+          min-width: 520px;
         }
   }
 

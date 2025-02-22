@@ -16,6 +16,11 @@ body {
   color: white; /* Ensures readability */
 }
 
+.light body {
+  background:#fffef2;
+  color: black;
+}
+
 /* Global container to ensure padding consistency */
 .container {
   width: 100%;
@@ -29,6 +34,9 @@ header {
   background-color: black;
 }
 
+.light .light-header {
+  background-color: #3a3a3a
+}
 .max-width {
   max-width: 1100px;
   margin: auto;

@@ -3,6 +3,9 @@ import "./globals.css";
 import Navbar from "./components/Navbar/Navbar";
 import Testimonials from "./components/Testimonials/Testimonials";
 import Footer from "./components/Footer/Footer";
+
+import { ThemeProvider } from "./context/ThemeContext";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -22,12 +25,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <header>
+        <ThemeProvider>
+        <header className="light-header">
       <Navbar/>
-      </header>
+      </header >
         {children}
-        <Testimonials/>
+        <Testimonials />
       <Footer />
+      </ThemeProvider>
       </body>
     </html>
   );

@@ -1,12 +1,16 @@
 .navbar {
     background: black;
-    color: white;
+    color: #e5e5e5;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 15px 20px;
     position: relative;
   }
+  .light .navbar {
+    background: #3a3a3a;  
+    color:   white     
+}
   
   .logo a {
     font-size: 20px;
@@ -181,3 +185,9 @@
     width: 20px;
     height: 20px;
   }
+
+  .mobile-menu {
+    display: flex;
+    align-items: center;
+gap: 10px;  }
+

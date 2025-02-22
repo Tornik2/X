@@ -2,6 +2,7 @@ import "./Footer.css";
 import { Facebook, Twitter, Linkedin } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import ThemeToggleBtn from "../ThemeToggleBtn/ThemeToggleBtn";
 
 export default function Footer() {
   return (

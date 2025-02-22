@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import "./Navbar.css";
 import Image from "next/image";
+import ThemeToggleBtn from "../ThemeToggleBtn/ThemeToggleBtn";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -16,8 +17,10 @@ export default function Navbar() {
         <Image src="/logo-main.png" width={20} height={20}alt="YourBank" />
         YourBanK</Link>
       </div>
-
+      
       {/* BurgerMenu */}
+      <div className="mobile-menu">
+      <ThemeToggleBtn />
       <button className="menu-button" onClick={() => setMenuOpen(!menuOpen)}>
         <div className="menu-icon">
           {menuOpen ? (
@@ -27,6 +30,7 @@ export default function Navbar() {
           )}
         </div>
       </button>
+      </div>
 
       {/* Nav For Mobile*/}
       <div className={`mobile-nav ${menuOpen ? "open" : ""}`}>
@@ -51,13 +55,13 @@ export default function Navbar() {
         <li><Link href="/login">Careers</Link></li>
         <li><Link href="/login">About</Link></li>
         <li><Link href="/merchants">Merchants</Link></li>
+        <ThemeToggleBtn />
       </ul>
 
       <div className="auth-links">
         <Link href="/register" className="signup">Sign Up</Link>
         <Link href="/login" className="login-button">Login</Link>
       </div>
-      
     </nav>
   );
 }
