@@ -4,8 +4,13 @@ import { useState } from "react";
 import { Facebook, Apple } from "lucide-react"; // Lucide icons
 import { FcGoogle } from "react-icons/fc"; // Google icon
 import "./login.css";
+import { useRouter } from "next/navigation"; // 
+
+
+const API_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 export default function LoginPage() {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -16,7 +21,7 @@ export default function LoginPage() {
     setLoading(true);
 
     try {
-      const response = await fetch("URL", {
+      const response = await fetch(`api/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -24,10 +29,13 @@ export default function LoginPage() {
         body: JSON.stringify({ email, password }),
       });
 
+      const data = await response.json();
+      console.log(data)
       if (!response.ok) throw new Error("Login failed");
 
       alert("Login successful!");
-      // IF RESPONSE OK ...............
+      // IF RESPONSE OK ...
+      router.push("/");
     } catch (err) {
       alert(err.message);
     } finally {

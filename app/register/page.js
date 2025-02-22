@@ -4,13 +4,17 @@ import {useState} from "react"; // Import useState
 import "./register.css"; // Import styles
 import { FcGoogle } from "react-icons/fc"; // Google icon
 import { Facebook, Apple } from "lucide-react"; // Facebook & Apple icons from Lucide
+import { useRouter } from "next/navigation"; // Import Next.js router
+
+const API_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 export default function RegisterPage() {
+  const router = useRouter(); 
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "password": "",
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -22,26 +26,25 @@ export default function RegisterPage() {
   // handle register
   const handleRegister = async (e) => {
     e.preventDefault();
-    console.log(formData)
     setLoading(true);
     setError("");
 
     try {
-      const response = await fetch("u", {
+      const response = await fetch(`api/auth/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
-
       const data = await response.json();
-
       if (!response.ok) {
         throw new Error(data.message || "Registration failed");
       }
 
       // IF RESPONSE OK ...............
+      console.log(data)
+      router.push("/");
     } catch (err) {
       setError(err.message);
       alert(err.message)
@@ -61,9 +64,9 @@ export default function RegisterPage() {
         <div className="input-group">
           <input
               type="text"
-              name="firstName"
+              name="first_name"
               placeholder="Enter First Name"
-              value={formData.firstName}
+              value={formData.first_name}
               onChange={handleChange}
               required
             />
@@ -71,9 +74,9 @@ export default function RegisterPage() {
         <div className="input-group">
         <input
               type="text"
-              name="lastName"
+              name="last_name"
               placeholder="Enter Last Name"
-              value={formData.lastName}
+              value={formData.last_name}
               onChange={handleChange}
               required
             />
