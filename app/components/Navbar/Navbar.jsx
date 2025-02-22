@@ -49,8 +49,37 @@ export default function Navbar() {
 
         
         <div className="mobile-auth">
-          <Link href="/register" className="signup" onClick={() => setMenuOpen(false)}>Sign Up</Link>
-          <Link href="/login" className="login-button" onClick={() => setMenuOpen(false)}>Login</Link>
+                {user ? (
+          <button 
+            className="login-button" 
+            onClick={() => {
+              // handleLogout();
+              setMenuOpen(false);
+            }}
+          >
+            Log Out
+          </button>
+        ) : (
+          <>
+            <Link 
+              href="/register" 
+              className="signup" 
+              onClick={() => setMenuOpen(false)}
+            >
+              Sign Up
+            </Link>
+            <Link 
+              href="/login" 
+              className="login-button" 
+              onClick={() => setMenuOpen(false)}
+            >
+              Login
+            </Link>
+          </>
+        )}
+
+
+          
         </div>
       </div>
 
@@ -64,8 +93,16 @@ export default function Navbar() {
       </ul>
 
       <div className="auth-links">
-        <Link href="/register" className="signup">Sign Up</Link>
-        <Link href="/login" className="login-button">Login</Link>
+        {user ? (
+          <button className="login-button" onClick={() => {}}>
+            Log Out
+          </button>
+        ) : (
+          <>
+            <Link href="/register" className="signup">Sign Up</Link>
+            <Link href="/login" className="login-button">Login</Link>
+          </>
+        )}
       </div>
     </nav>
   );
