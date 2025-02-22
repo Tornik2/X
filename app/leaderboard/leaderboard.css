@@ -1,0 +1,132 @@
+
+.leaderboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: max-content;
+    padding: 20px;
+    border-radius: 20px;
+}  
+.light .leaderboard-container {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+}
+
+.topSection {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+  
+  .userCircle {
+    width: 80px;
+    height: 80px;
+    background-color: #c4ff49;
+    color: #000;
+    font-weight: bold;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    font-size: 16px;
+  }
+
+  .points {
+    text-align: center;
+  }
+  
+  .userCircle .crown {
+    position: absolute;
+    top: -15px;
+    font-size: 20px;
+  }
+  
+  .userCircle .rank {
+    background-color: #666;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 50%;
+    font-size: 14px;
+    position: absolute;
+    bottom: -10px;
+  }
+  
+  .leaderboardSection {
+    width: 100%;
+    max-width: 350px;
+    background-color: #111;
+    padding: 15px;
+    border-radius: 10px;
+  }
+
+  .light .leaderboardSection {
+    background-color: #cac6c6;
+    
+  }
+  
+  
+  .leaderboardSection h3 {
+    margin-bottom: 10px;
+  }
+  
+  .leaderboardItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    background-color: #222;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  .light .leaderboardItem {
+    background-color: #f7f7f7;;
+  }
+  .userBadge {
+    width: 35px;
+    height: 35px;
+    background-color: #c4ff49;
+    color: black;
+    font-weight: bold;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .name {
+    flex-grow: 1;
+    margin-left: 10px;
+  }
+  
+  .topUser {
+    transform: translateY(-15px);
+  }
+
+  .leaderboard-hero {
+    object-fit: contain;
+    margin-bottom: 20px;
+  }
+
+  .leaderboard-flex {
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+  @media (min-width: 768px) {
+    .leaderboard-flex {
+      flex-direction: row-reverse;
+    }
+    .leaderboard-hero {
+      width: 50%;
+    }
+    .leaderboard-container {
+      width: 50%;
+    }
+  }

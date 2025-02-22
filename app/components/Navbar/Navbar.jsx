@@ -61,7 +61,7 @@ export default function Navbar() {
 
         <ul>
           <li className="active"><Link href="/" onClick={() => setMenuOpen(false)}>Home</Link></li>
-          <li><Link href="/login" onClick={() => setMenuOpen(false)}>Careers</Link></li>
+          <li><Link href="/leaderboard" onClick={() => setMenuOpen(false)}>Leaderboard</Link></li>
           <li><Link href="/register" onClick={() => setMenuOpen(false)}>About</Link></li>
           <li><Link href="/merchants" onClick={() => setMenuOpen(false)}>Merchants</Link></li>
         </ul>
@@ -105,7 +105,7 @@ export default function Navbar() {
       {/* Nav for Desktop */}
       <ul className="nav-links">
         <li className="active"><Link href="/">Home</Link></li>
-        <li><Link href="/register">Careers</Link></li>
+        <li><Link href="/leaderboard">Leaderboard</Link></li>
         <li><Link href="/login">About</Link></li>
         <li><Link href="/merchants">Merchants</Link></li>
         <ThemeToggleBtn />
