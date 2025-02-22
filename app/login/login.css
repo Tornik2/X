@@ -7,12 +7,19 @@
     color: white;
     background: rgba(255, 255, 255, 0.05);
   }
-  
+  .light .login-container {
+    color: #222;
+    background: #f7f7f7;
+    box-shadow: 0 0 5px #e1e1e1;
+}
   .login-title {
     font-size: 26px;
     font-weight: bold;
     color: #d4ff00;
     margin-bottom: 10px;
+  }
+  .light .login-title {
+    color: #333;
   }
   
   .login-subtitle {
@@ -20,6 +27,7 @@
     margin-bottom: 20px;
     opacity: 0.8;
   }
+
   
   .input-group {
     width: 100%;
@@ -38,6 +46,9 @@
     outline: none;
     padding-left: 15px;
   }
+  .light .input-group input {
+    background: #333333;  
+}
   
   .input-group input::placeholder {
     color: rgba(255, 255, 255, 0.6);
@@ -50,7 +61,9 @@
     margin-bottom: 20px;
     cursor: pointer;
   }
-  
+  .light .forgot-password {
+    color: #222;
+}
   .primary-button {
     width: 100%;
     max-width: 300px;
@@ -84,6 +97,10 @@
     margin: 20px 0;
     opacity: 0.8;
   }
+  .light .or-text {
+    color: #333;
+    opacity: 1;
+}
   
   .social-buttons {
     display: flex;
@@ -104,6 +121,10 @@
     border: none;
   }
   
+  .light .social-icon {
+    background: #e0e0e0;
+    color: #222;
+}
   @media (min-width: 768px) {
     .login-container {
       max-width: 80%;
