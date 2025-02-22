@@ -3,18 +3,28 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
 const AuthContext = createContext();
+const API_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [token, setToken] = useState(null);
 
   // Function to fetch the user from your API endpoint
   const fetchUser = async () => {
+    setLoading(true);
     try {
-      const res = await fetch("/api/auth/me", {
+      const token = localStorage.getItem("token"); // Retrieve token from localStorage
+        console.log(token)
+      const res = await fetch(`${API_URL}/profile`, {
         method: "GET",
+        headers: {
+          "Authorization": token ? `Bearer ${token}` : "", // Pass token in Authorization header
+          "Content-Type": "application/json",
+        },
         credentials: "include",
       });
+  
       if (res.ok) {
         const data = await res.json();
         setUser(data);
@@ -28,9 +38,13 @@ export const AuthProvider = ({ children }) => {
       setLoading(false);
     }
   };
+  
 
   useEffect(() => {
+    const accessToken = localStorage.getItem("token"); // Retrieve token from localStorage
+    setToken(accessToken);
     fetchUser();
+
   }, []);
 
   return (

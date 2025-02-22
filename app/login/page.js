@@ -19,34 +19,41 @@ export default function LoginPage() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-
     setLoading(true);
-
+    setError("");
+  
     try {
-      const response = await fetch(`api/auth/login/`, {
+      const response = await fetch(`${API_URL}/login/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ email, password }),
       });
-      console.log(JSON.stringify({ email, password }))
+  
       const data = await response.json();
+  
       if (!response.ok) {
         setError(data.error || "Login failed");
         throw new Error(data.message || "Login failed");
-      };
-
-      // IF RESPONSE OK ...
+      }
+  
+      // Store token in localStorage
+      localStorage.setItem("token", data.access);
+  
+      // Refresh user session
       await refreshUser();
+  
+      // Redirect to homepage or dashboard
       router.push("/");
     } catch (err) {
-      console.log(err, err.message)
+      console.log(err, err.message);
       setError(err.message);
     } finally {
       setLoading(false);
     }
   };
+  
 console.log(error)
   return (
     <form onSubmit={handleLogin} className="login-container">

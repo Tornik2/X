@@ -31,38 +31,45 @@ export default function RegisterPage() {
     e.preventDefault();
     setLoading(true);
     setError("");
-
+  
     try {
-      const response = await fetch(`api/auth/register/`, {
+      const response = await fetch(`${API_URL}/register/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
+  
       const data = await response.json();
+      console.log(data)
       if (!response.ok) {
         setError(data.message || "Registration failed");
         throw new Error(data.message || "Registration failed");
       }
-
-      // IF RESPONSE OK ...............
+  
+      // Store token in localStorage
+      localStorage.setItem("token", data.access);
+  
+      // Refresh user session
       await refreshUser();
+  
+      // Redirect to homepage or dashboard
       router.push("/");
     } catch (err) {
-      //set error and clear email and password
+      // Set error and clear email and password
       setError(err.message);
       setFormData({
         "first_name": formData.first_name,
         "last_name": formData.last_name,
         "email": "",
         "password": "",
-      })
-      
+      });
     } finally {
       setLoading(false);
     }
   };
+  
 
   return (
     <form onSubmit={handleRegister} className="register-container">
