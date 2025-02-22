@@ -1,42 +1,59 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
 import Image from 'next/image';
 import Link from 'next/link';
 import './merchants.css';
 
-// Simulated API fetch function
-async function fetchMerchants() {
-  return [
-    {
-      id: 1,
-      name: 'Market',
-      description: 'Sustainable Groceries & Local Products',
-      about: 'GreenEarth Market sources fresh, organic produce and eco-friendly products, promoting a healthier planet and community.',
-      image: '/merchant1.jpg',
-      value: 0.1,
-    },
-    {
-      id: 2,
-      name: 'EcoStyleFashion',
-      description: 'Ethical Clothing & Accessories',
-      about: 'EcoStyle Fashion designs stylish apparel using recycled materials and sustainable production methods, ensuring ethical fashion for all.',
-      image: '/merchant2.jpg',
-      value: 0.1,
+const API_URL = process.env.NEXT_PUBLIC_API_BASE_URL; // Use environment variable
 
-    },
-    {
-      id: 3,
-      name: 'SolarTechSolutions',
-      description: 'Renewable Energy for Your Home',
-      about: 'SolarTech Solutions provides cutting-edge solar panels and green energy solutions to help homes and businesses become energy independent.',
-      image: '/merchant3.jpg',
-      value: 0.15,
+// Fetch merchants from API
+async function fetchMerchants(token) {
+  try {
+    const response = await fetch(`${API_URL}/merchants`, {
+      method: "GET",
+      headers: {
+        "Authorization": token ? `Bearer ${token}` : "", // Pass Bearer token
+        "Content-Type": "application/json",
+      },
+      cache: "no-store",
+    });
 
-    }
-  ];
+    if (!response.ok) throw new Error("Failed to fetch merchants");
+
+    return await response.json();
+  } catch (error) {
+    console.error("Error fetching merchants:", error);
+    return []; // Return empty array if request fails
+  }
 }
 
-export default async function Merchants() {
-  const merchants = await fetchMerchants();
 
+export default function Merchants() {
+  const [merchants, setMerchants] = useState([]); 
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      setError("");
+
+      try {
+        const token = localStorage.getItem("token"); // Get token from localStorage
+        const fetchedMerchants = await fetchMerchants(token);
+        setMerchants(fetchedMerchants);
+      } catch (err) {
+        setError("Failed to load merchants.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+  console.log(merchants)
   return (
     <div className="container">
         <div className='max-width'>
@@ -63,10 +80,10 @@ export default async function Merchants() {
               <h2 className="merchant-name">{merchant.name}</h2>
               <div className="merchant-value">
                 <p>ESG: Environment</p>
-                <p>1 GEL = {merchant.value} ESGC</p>
+                <p>1 GEL = {merchant.esg_value_ratio} ESGC</p>
               </div>
               <p className='sub-title'>About This Merchant</p>
-              <p className="merchant-about">{merchant.about}</p>
+              <p className="merchant-about">{merchant.description}</p>
               <Link className="visit-button" href={`merchants/${merchant.name}`}>View Merchandise</Link>
             </div>
           </div>

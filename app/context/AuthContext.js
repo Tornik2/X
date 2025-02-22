@@ -9,7 +9,7 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [token, setToken] = useState(null);
-
+    console.log(user)
   // Function to fetch the user from your API endpoint
   const fetchUser = async () => {
     setLoading(true);
@@ -44,7 +44,6 @@ export const AuthProvider = ({ children }) => {
     const accessToken = localStorage.getItem("token"); // Retrieve token from localStorage
     setToken(accessToken);
     fetchUser();
-
   }, []);
 
   return (
