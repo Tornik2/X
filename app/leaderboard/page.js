@@ -70,8 +70,33 @@ const Leaderboard = () => {
 console.log(topUsers)
   return (
     <div className="max-width leaderboard-flex">
+      <div className="right-side-leaderboard">
       <Image src="/leaderboard.png" alt="leaderboard" width={400} height={250} className="leaderboard-hero" />
-      
+      <div className="transactions-list">
+          <h3 className="transactions-title">Monthly Rewards</h3>
+
+          
+
+          
+              <div  className="transaction-item">
+                <span className="transaction-date">1</span>
+                <span className="transaction-amount">100</span>
+                <span className="transaction-esg">ESGC</span>
+              </div>
+              <div  className="transaction-item">
+                <span className="transaction-date">2</span>
+                <span className="transaction-amount">80</span>
+                <span className="transaction-esg">ESGC</span>
+              </div>
+              <div  className="transaction-item">
+                <span className="transaction-date">3</span>
+                <span className="transaction-amount">50</span>
+                <span className="transaction-esg">ESGC</span>
+              </div>
+            
+         
+        </div>
+        </div>
       <div className="leaderboard-container">
         {loading && <p className="loading-message">Loading leaderboard...</p>}
         {error && <p className="error-message">{error}</p>}
