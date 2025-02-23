@@ -179,7 +179,7 @@
         width: max-content;
         font-size: 32px;
         font-weight: 700;
-        font-family:TBCXBOLD, Cochin, Georgia, Times, 'Times New Roman', serif;
+        font-family:"TBCXRegular", Cochin, Georgia, Times, 'Times New Roman', serif;
         z-index: 4;
     }
     .light .section-heading {
@@ -218,4 +218,7 @@
   .mobile-not-logged-in {
     margin: 0 auto;
     display: block;
+  }
+  .light .merchant-name.merchant-name-me {
+    color: #678f18;
   }

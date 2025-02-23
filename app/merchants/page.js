@@ -96,8 +96,22 @@ export default function Merchants() {
               <p className="merchant-about">{merchant.description}</p>
               <Link className="visit-button" href={`merchants/${merchant.id}`}>View Merchandise</Link>
             </div>
+            
           </div>
+          
         ))}
+        <div className="merchant-card">
+        <div className="merchant-info">
+              <h2 className="merchant-name merchant-name-me" style={{color: "#678f18"}}>YourBanK</h2>
+              <div className="merchant-value">
+                <p>ESG: Environment</p>
+                <p>1 GEL = {0.1} ESGC</p>
+              </div>
+              <p className='sub-title'>About This Merchant</p>
+              <p className="merchant-about">Play equal! Nature produces chargers with recycled materials. Collect ESGC and buy merchandise with</p>
+              <Link className="visit-button" href={`merchants/4`}>View Merchandise</Link>
+            </div>
+            </div>
       </section>
       </div>
     </div>

@@ -96,10 +96,71 @@ export default function Merchant() {
       setProcessing(false);
     }
   };
-
+console.log(id === "4")
   return (
+    
     <div className="max-width">
-      <div className="merchant-container">
+      {id === "4" ? (
+          <div className="merchant-container">
+          <h1 className="merchant-title">YourBanK Products</h1>
+          <p className="merchant-description">
+          Do Good with YourBanK.  Collect ESGC and Help Nature grow! Plant a tree or help animal shelter.
+          </p>
+  
+          <h2 className="merchandise-title">Merchandise</h2>
+  
+          
+        <Modal message={message} onClose={() => setMessage("")} />
+  
+            <div className="products-list">
+              
+                <div className="product-card">
+                  <Image
+                    className="product-image"
+                    src={"/tree.jpg"}
+                    alt={"plant a tree"}
+                    width={300}
+                    height={180}
+                  />
+                  <h3 className="product-name">Plant a tree</h3>
+                  <p className="product-price">5 ESGC</p>
+                  <button
+                    className="purchase-button"
+                    onClick={() => {
+                      setMessage("✅ You have planted a tree!")
+                    }}
+                    disabled={processing}
+                  >
+                    {processing ? "Processing..." : "Purchase"}
+                  </button>
+                </div>
+                <div className="product-card">
+                  <Image
+                    className="product-image"
+                    src={"/animal.jpg"}
+                    alt={"feed an animal"}
+                    width={300}
+                    height={180}
+                  />
+                  <h3 className="product-name">Feed an animal</h3>
+                  <p className="product-price">5 ESGC</p>
+                  <button
+                    className="purchase-button"
+                    onClick={() => {
+                      setProcessing(true)
+                      setMessage("✅ Now you've helped a cute animal!")
+                      setProcessing(false)
+                    }}
+                    disabled={processing}
+                  >
+                    {processing ? "Processing..." : "Purchase"}
+                  </button>
+                </div>
+              
+            </div>
+          
+        </div>
+        ) :  (<div className="merchant-container">
         <h1 className="merchant-title">{merchantName} Products</h1>
         <p className="merchant-description">
           {merchantName} produces chargers with recycled materials. Collect ESGC and buy merchandise with your hard-earned coins!
@@ -127,6 +188,8 @@ export default function Merchant() {
                 <button
                   className="purchase-button"
                   onClick={() => handlePurchase(product.id)}
+
+
                   disabled={processing}
                 >
                   {processing ? "Processing..." : "Purchase"}
@@ -137,7 +200,12 @@ export default function Merchant() {
         ) : (
           !loading && <p className="no-products">No products available.</p>
         )}
-      </div>
+      </div>)}
+
+        
+
+
+
     </div>
   );
 }
