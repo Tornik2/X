@@ -5,6 +5,8 @@ import "./merchant.css";
 import { useParams } from "next/navigation";
 import Image from "next/image";
 import { useAuth } from "../../context/AuthContext"
+import Modal from "../../components/Modal/Modal"
+
 const API_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 export default function Merchant() {
@@ -107,7 +109,7 @@ export default function Merchant() {
 
         {loading && <p className="loading-message">Loading products...</p>}
         {error && <p className="error-message">{error}</p>}
-        {message && <p className="status-message">{message}</p>}
+      <Modal message={message} onClose={() => setMessage("")} />
 
         {!loading && !error && products.length > 0 ? (
           <div className="products-list">

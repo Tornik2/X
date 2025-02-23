@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useAuth } from "../context/AuthContext"; // Get email from AuthContext
 import Image from "next/image";
 import "./buy.css";
+import Modal from "../components/Modal/Modal"
 
 const API_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
@@ -36,8 +37,9 @@ export default function Merchant() {
   const { user, refreshUser } = useAuth(); // Get email from AuthContext
   const [processing, setProcessing] = useState(false);
   const [message, setMessage] = useState("");
+  const [esgCount, setEsgCount] = useState(0)
 
-  const handlePurchase = async (product) => {
+  const handlePurchase = async (product, earnedEsg) => {
     if (!user?.email) {
       setMessage("❌ User email not found. Please log in.");
       return;
@@ -63,7 +65,8 @@ export default function Merchant() {
         throw new Error(errorData.message || "Transaction failed");
       }
 
-      setMessage("✅ Purchase successful!");
+      setMessage(`✅ Purchase successful! 
+         You get ${earnedEsg} ESGC`);
       await refreshUser(); // Refresh user session
     } catch (error) {
       console.error("Purchase error:", error);
@@ -83,7 +86,7 @@ export default function Merchant() {
 
       <p className="email-display">🟢 Logged in as: <strong>{user?.email || "No email found"}</strong></p>
 
-      {message && <p className="status-message">{message}</p>}
+      <Modal message={message} onClose={() => setMessage("")} />
 
       <div className="products-list">
         {products.map((product) => (
@@ -99,7 +102,12 @@ export default function Merchant() {
             <p className="product-price">${product.esg_coins_price}</p>
             <button
               className="purchase-button"
-              onClick={() => handlePurchase(product)}
+              onClick={() => {
+                const earnedEsg = product.esg_coins_price / 10; 
+                setEsgCount(earnedEsg);
+                handlePurchase(product, earnedEsg)
+                
+              }}
               disabled={processing}
             >
               {processing ? "Processing..." : "Purchase"}
