@@ -1,4 +1,5 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from 'next/font/google'
+
 import "./globals.css";
 import Navbar from "./components/Navbar/Navbar";
 import Testimonials from "./components/Testimonials/Testimonials";
@@ -7,15 +8,9 @@ import Footer from "./components/Footer/Footer";
 import { ThemeProvider  } from "./context/ThemeContext";
 import {  AuthProvider  } from "./context/AuthContext";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+const inter = Inter({ subsets: ["latin"], weight: ["400", "600", "700"] });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+
 
 export const metadata = {
   title: "YourBank",
@@ -26,7 +21,7 @@ export default function RootLayout({ children }) {
   
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body  className={inter.className}>
         <ThemeProvider>
           <AuthProvider>
         <header className="light-header">
