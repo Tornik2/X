@@ -144,3 +144,16 @@
       width: 50%;
     }
   }
+  .not-logged-in {
+    display: inline-block;
+    margin-top: 50px auto;
+    background-color: #c4ff49;
+    color: #000000;
+    text-align: center;
+    padding: 15px;
+    width: 150px;
+    text-decoration: none;
+  }
+  .not-logged-in:hover {
+    opacity: 0.8;
+  }

@@ -13,22 +13,22 @@ const products = [
     id: 1,
     name: "Wireless Headphones",
     esg_coins_price: 50,
-    picture: "https://via.placeholder.com/300x200?text=Wireless+Headphones",
-    merchant_id: 1, // Random merchant
+    picture: "/wireless.webp",
+    merchant_id: 1
   },
   {
     id: 2,
     name: "Smartwatch",
     esg_coins_price: 100,
-    picture: "https://via.placeholder.com/300x200?text=Smartwatch",
-    merchant_id: 2, // Random merchant
+    picture: "/watch.webp",
+    merchant_id: 2
   },
   {
     id: 3,
     name: "Gaming Mouse",
     esg_coins_price: 150,
-    picture: "https://via.placeholder.com/300x200?text=Gaming+Mouse",
-    merchant_id: 3, // Random merchant
+    picture: "/mouse.jpg",
+    merchant_id: 3,
   },
 ];
 
@@ -74,6 +74,7 @@ export default function Merchant() {
   };
 
   return (
+    <div style={{padding: "15px"}}>
     <div className="merchant-container">
       <h1 className="merchant-title">Store</h1>
       <p className="merchant-description">
@@ -106,6 +107,7 @@ export default function Merchant() {
           </div>
         ))}
       </div>
+    </div>
     </div>
   );
 }

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import "./leaderboard.css";
+import Link from "next/link";
 
 const API_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
@@ -11,6 +12,7 @@ const Leaderboard = () => {
   const [otherUsers, setOtherUsers] = useState([]); // Remaining users
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [loggedIn, setLoggedIn] = useState(true)
   console.log(topUsers)
   useEffect(() => {
     const fetchLeaderboard = async () => {
@@ -19,9 +21,10 @@ const Leaderboard = () => {
         console.log(token)
         if (!token) {
           console.error("User not authenticated.");
+          setLoggedIn(false)
           return;
         }
-  
+        setLoggedIn(true)
         const response = await fetch(`${API_URL}/leaderboard`, {
           method: "GET",
           headers: {
@@ -95,6 +98,9 @@ console.log(topUsers)
             </div>
           ))}
         </div>
+        <div style={{height: "20px"}}></div>
+        {!loggedIn && <Link className="not-logged-in" href={"/login"}>Log In First</Link> }
+
       </div>
     </div>
   );

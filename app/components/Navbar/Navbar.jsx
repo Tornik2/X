@@ -29,7 +29,7 @@ export default function Navbar() {
       
       <div className="logo">
         <Link href="/" className="logo-link">
-        <Image src="/logo-main.png" width={20} height={20}alt="YourBank" />
+        <Image className="logo-image" src="/logo-main.png" width={30} height={30}alt="YourBank" />
         YourBanK</Link>
       </div>
       
@@ -55,10 +55,10 @@ export default function Navbar() {
       <div className={`mobile-nav ${menuOpen ? "open" : ""}`}>
 
         <ul>
-          <li className={`${pathname === "/" ? "active" : ""}`}><Link href="/" onClick={() => setMenuOpen(false)}>Home</Link></li>
           <li className={`${pathname === "/leaderboard" ? "active" : ""}`}><Link href="/leaderboard" onClick={() => setMenuOpen(false)}>Leaderboard</Link></li>
           <li className={`${pathname === "/transactions" ? "active" : ""}`}><Link href="/transactions" onClick={() => setMenuOpen(false)}>Transactions</Link></li>
           <li className={`${pathname === "/merchants" ? "active" : ""}`}><Link href="/merchants" onClick={() => setMenuOpen(false)}>Merchants</Link></li>
+          <li className={`${pathname === "/buy" ? "active" : ""}`}><Link href="/buy" onClick={() => setMenuOpen(false)}>Buy(Sim)</Link></li>
         </ul>
 
         
@@ -98,10 +98,11 @@ export default function Navbar() {
       </div>
       {/* Nav for Desktop */}
       <ul className="nav-links">
-        <li className={`${pathname === "/" ? "active" : ""}`}><Link href="/">Home</Link></li>
         <li className={`${pathname === "/leaderboard" ? "active" : ""}`}><Link href="/leaderboard">Leaderboard</Link></li>
         <li className={`${pathname === "/transactions" ? "active" : ""}`}><Link href="/transactions">Transactions</Link></li>
         <li className={`${pathname === "/merchants" ? "active" : ""}`}><Link href="/merchants">Merchants</Link></li>
+        <li className={`${pathname === "/buy" ? "active" : ""}`}><Link href="/buy">Buy(Sim)</Link></li>
+
         <ThemeToggleBtn />
       </ul>
         <div className="top-right">

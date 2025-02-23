@@ -58,6 +58,8 @@
   }
   .merchant-card:hover {
     box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    transform: translateY(-5px);
+    transition: all 0.1s ease-in;
   }
   .light .merchant-card {
     background-color: transparent;
@@ -114,6 +116,11 @@
     text-align: center;
     margin-top: 5px;
     line-height: 1.3;
+    display: -webkit-box;
+  -webkit-line-clamp: 2; /* Limits to 2 lines */
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
   }
   .light .merchant-about {
     color: #333;
@@ -194,4 +201,21 @@
   }
 
   
-  
+  .not-logged-in {
+    border-radius: 20px;
+    display: inline-block;
+    margin-top: 50px auto;
+    background-color: #c4ff49;
+    color: #000000;
+    text-align: center;
+    padding: 15px;
+    width: 150px;
+    text-decoration: none;
+  }
+  .not-logged-in:hover {
+    opacity: 0.8;
+  }
+  .mobile-not-logged-in {
+    margin: 0 auto;
+    display: block;
+  }

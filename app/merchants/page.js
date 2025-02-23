@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Image from 'next/image';
 import Link from 'next/link';
 import './merchants.css';
+import { useRouter } from "next/navigation";
 
 const API_URL = process.env.NEXT_PUBLIC_API_BASE_URL; // Use environment variable
 
@@ -20,7 +21,9 @@ async function fetchMerchants(token,) {
       cache: "no-store",
     });
 
-    if (!response.ok) throw new Error("Failed to fetch merchants");
+    if (!response.ok) {
+      console.log(error)
+      throw new Error("Failed to fetch merchants")};
 
     return await response.json();
   } catch (error) {
@@ -34,7 +37,10 @@ export default function Merchants() {
   const [merchants, setMerchants] = useState([]); 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [loggedIn, setLoggedIn] = useState(true)
 
+
+  const router = useRouter()
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
@@ -42,6 +48,9 @@ export default function Merchants() {
 
       try {
         const token = localStorage.getItem("token"); // Get token from localStorage
+        if (!token) {
+          setLoggedIn(false)
+        }
         const fetchedMerchants = await fetchMerchants(token);
         setMerchants(fetchedMerchants);
       } catch (err) {
@@ -71,6 +80,7 @@ export default function Merchants() {
         <h1 className="page-title">Merchants</h1>
         <p className="subtitle">Explore exciting merchandise offered by our partnered stores  , offering environmentally clean items! Be part of shaping a better future!</p>
       </header>
+      {!loggedIn && <Link className="not-logged-in mobile-not-logged-in" href={"/login"}>Log In First</Link> }
 
             {/* Merchants section*/}
       <section className="merchants-list">
