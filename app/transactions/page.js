@@ -22,7 +22,6 @@ export default function Merchants() {
             const token = localStorage.getItem("token");
     
             if (!token) {
-              console.error("User not authenticated.");
               setError("User not authenticated.");
               setLoading(false);
               return;
@@ -41,8 +40,8 @@ export default function Merchants() {
             }
     
             const data = await response.json();
-            console.log("Transactions Data:", data); // ✅ Logs the response
-            setTransactions(data);
+            const lastFivetransactions = data.slice(0, 5);
+            setTransactions(lastFivetransactions);
           } catch (err) {
             console.error("Transactions fetch error:", err);
             setError("Failed to load transactions.");
@@ -54,11 +53,17 @@ export default function Merchants() {
         fetchTransactions();
       }, []);
   
+      //format date
+      const formatDate = (dateString) => {
+        const date = new Date(dateString);
+        return date.toISOString().split("T")[0]; 
+      };
+
   return (
     <div className="container">
-        <div className='max-width'>
+        <div className='max-width transactions-flex'>
             
-        <div className='hero'>
+        <div className='hero-transactions'>
             <div className="section-heading">
             Check Your ESG 
             <br/>
@@ -66,12 +71,32 @@ export default function Merchants() {
             </div>
             <Image src="/terminal.png" alt="taking care of nature" width={400} height={250} className="caring-image" />
         </div>
-
+<div className="bottom-half">
       <header className="transactions-header">
         <h1 className="page-title">Transactions</h1>
       </header>
 
-           
+    {/* ✅ Transactions List */}
+    <div className="transactions-list">
+          <h3 className="transactions-title">Purchases</h3>
+
+          {loading && <p className="loading-message">Loading transactions...</p>}
+          {error && <p className="error-message">{error}</p>}
+
+          {!loading && !error && transactions.length > 0 ? (
+            transactions.map((transaction) => (
+              <div key={transaction.id} className="transaction-item">
+                <span className="transaction-date">{formatDate(transaction.transaction_date)}</span>
+                <span className="transaction-merchant">Merchant {transaction.merchant}</span>
+                <span className="transaction-amount">{transaction.amount} GEL</span>
+                <span className="transaction-esg">{transaction.earned_esg_coins} ESGC</span>
+              </div>
+            ))
+          ) : (
+            !loading && <p className="no-transactions">No transactions available.</p>
+          )}
+        </div>
+        </div>
       </div>
     </div>
   );
